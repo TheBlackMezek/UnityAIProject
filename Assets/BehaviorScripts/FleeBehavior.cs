@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FleeBehavior : MonoBehaviour {
 
-    public float speed;
+    public float speed = 5.0f;
 
     public Transform target;
     public Rigidbody rb;
