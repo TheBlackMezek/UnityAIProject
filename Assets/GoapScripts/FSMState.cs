@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FSMState : MonoBehaviour {
+public interface FSMState {
+    
+    void Update(FSM fsm, GameObject obj);
+    void Updadte(FSM fsm, GameObject obj);
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

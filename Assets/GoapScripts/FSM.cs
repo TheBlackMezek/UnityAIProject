@@ -2,15 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+enum GoapState
+{
+    IDLE,
+    MOVETO,
+    ACTION
+}
+
+
 public class FSM : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    
+    private Stack<FSMState> stateStack = new Stack<FSMState>();
+
+    public delegate void FSMState(FSM fsm, GameObject obj);
+
+
+
 	
-	// Update is called once per frame
 	void Update () {
-		
+		if(stateStack.Peek() != null)
+        {
+            stateStack.Peek().Invoke(this, gameObject);
+        }
 	}
+
+    public void PushState(FSMState state)
+    {
+        stateStack.Push(state);
+    }
+
+    public void PopState()
+    {
+        stateStack.Pop();
+    }
 }

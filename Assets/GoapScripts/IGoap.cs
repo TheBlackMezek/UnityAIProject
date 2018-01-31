@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IGoap : MonoBehaviour {
+public interface IGoap {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    List<KeyValuePair<string, object>> GetWorldState();
+
+    List<KeyValuePair<string, object>> CreateGoalState();
+
+    void PlanFailed(List<KeyValuePair<string, object>> failedGoal);
+
+    void PlanFound(List<KeyValuePair<string, object>> goal, Queue<GoapAction> actions);
+
+    void ActionsFinished();
+
+    void PlanAborted(GoapAction aborter);
+
+    bool MoveAgent(GoapAction nextAction);
+
 }
